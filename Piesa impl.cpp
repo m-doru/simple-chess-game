@@ -198,14 +198,7 @@ bool Tura :: valid_move(int fromx, int fromy, int tox, int toy, Piesa* tabla[8][
     if(fromx != tox && fromy != toy)
         throw string("Mutare invalida! Tura nu se deplaseaza decat pe o singura directie!");
     bool validitate_mutare = false;
-    try
-    {
-        validitate_mutare = check_linie(fromx, fromy, tox, toy, tabla);
-    }
-    catch(string s)
-    {
-        throw;
-    }
+    validitate_mutare = check_linie(fromx, fromy, tox, toy, tabla);
     return validitate_mutare;
 
 }
@@ -215,14 +208,7 @@ bool Nebun :: valid_move(int fromx, int fromy, int tox, int toy, Piesa* tabla[8]
     if(abs(tox-fromx) != abs(toy - fromy))
         throw string("Mutare invalida! Nebunul se poate deplasa doar pe diagonala!");
     bool validitate_mutare = false;
-    try
-    {
-        validitate_mutare = check_diagonal(fromx, fromy, tox, toy, tabla);
-    }
-    catch(string s)
-    {
-        throw;
-    }
+    validitate_mutare = check_diagonal(fromx, fromy, tox, toy, tabla);
     return validitate_mutare;
 
 }
@@ -240,24 +226,13 @@ bool Regina :: valid_move(int fromx, int fromy, int tox, int toy, Piesa* tabla [
         throw string ("Mutare invalida! Regina se deplaseaza ori pe diagonala ori pe o singura directie!");
     bool validitate_mutare1 = false, validitate_mutare2 = false;
     if(fromx != tox && fromy != toy)
-    {try
     {
         validitate_mutare1 = check_diagonal(fromx, fromy, tox, toy, tabla);
     }
-    catch(string s)
-    {
-        throw;
-    }}
     else
-    {try
     {
         validitate_mutare2 = check_linie(fromx, fromy, tox, toy, tabla);
     }
-    catch(string s)
-    {
-        throw;
-    }}
     return validitate_mutare1&&validitate_mutare2;
-
 }
 
