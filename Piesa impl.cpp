@@ -227,11 +227,25 @@ bool Regina :: valid_move(int fromx, int fromy, int tox, int toy, Piesa* tabla [
     bool validitate_mutare1 = false, validitate_mutare2 = false;
     if(fromx != tox && fromy != toy)
     {
-        validitate_mutare1 = check_diagonal(fromx, fromy, tox, toy, tabla);
+        try
+        {
+            validitate_mutare1 = check_diagonal(fromx, fromy, tox, toy, tabla);
+        }  
+        catch(string s)
+        {
+            throw;
+        }
     }
     else
     {
-        validitate_mutare2 = check_linie(fromx, fromy, tox, toy, tabla);
+        try
+            {
+                validitate_mutare2 = check_linie(fromx, fromy, tox, toy, tabla);
+            }
+        catch(string s)
+        {
+            throw;
+        }   
     }
     return validitate_mutare1&&validitate_mutare2;
 }
